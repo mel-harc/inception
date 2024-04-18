@@ -33,6 +33,8 @@ services:
     image: wordpress
     build: ./requirements/wordpress/.
     container_name: wordpress
+    depends_on:
+      - mariadb
     networks:
       - NT
     volumes:
@@ -44,7 +46,9 @@ services:
     container_name: nginx
     build: ./requirements/nginx/.
     image: nginx
-    network:
+    depends_on:
+      - wordpress
+    networks:
       - NT
     ports:
       - "443:443"
