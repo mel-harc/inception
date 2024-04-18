@@ -19,5 +19,6 @@ echo "server {
             #}
         }
         " >> etc/nginx/sites-available/default
-
+mkdir -p /var/log
+echo "heeeeeeeeeeellllloooooooo" >> /var/log/hello.log
 nginx -g "daemon off;"

@@ -1,16 +1,9 @@
-all : up
+CLEAN = docker compose down --rmi all; clear
 
-up : 
-	@docker-compose -f ./srcs/docker-compose.yml up -d
+all :
+	docker-compose -f ./srcs/docker-compose.yml up
 
-down : 
-	@docker-compose -f ./srcs/docker-compose.yml down
+down:
+	cd srcs && $(CLEAN)
 
-stop : 
-	@docker-compose -f ./srcs/docker-compose.yml stop
-
-start : 
-	@docker-compose -f ./srcs/docker-compose.yml start
-
-status : 
-	@docker ps
+re : down all
