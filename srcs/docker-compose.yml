@@ -1,11 +1,54 @@
 version: '3.5'
 
+volumes:
+  WordPress:
+    driver: local
+    driver_opts:
+       o: bind
+       type: none
+       device: /home/mel-harc/Desktop/inception/wordpress
+  DB:
+    driver: local
+    driver_opts:
+       o: bind
+       type: none
+       device: /home/mel-harc/Desktop/inception/srcs/mariadb
+
+networks:
+  NT:
+
 services:
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb/.
+    image: mariadb
+    networks:
+      - NT
+    volumes:
+      - DB:/var/lib/msql
+    env_file:
+      - .env
+
+  wordpress:
+    image: wordpress
+    build: ./requirements/wordpress/.
+    container_name: wordpress
+    networks:
+      - NT
+    volumes:
+      - WordPress:/var/www/html
+    env_file:
+      - .env
+
   nginx:
     container_name: nginx
     build: ./requirements/nginx/.
     image: nginx
-    env_file: .env
+    network:
+      - NT
     ports:
-    - "443:443"
-
+      - "443:443"
+    volumes:
+      - WordPress:/var/www/html
+    env_file:
+      - .env

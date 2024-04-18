@@ -9,16 +9,15 @@ echo "server {
             ssl_certificate_key /etc/nginx/ssl/nginx.key;
             
             #root and index and server_name
-            #root /var/www/html;
-            #server_name ${DOMAIN_NAME};
-            #index index.php index.html index.htm;
+            root /var/www/html;
+            server_name ${DOMAIN_NAME};
+            index index.php index.html index.htm;
             
-            #location ~ \.php$ {								# For every php request
-            #    include snippets/fastcgi-php.conf;
-            #    fastcgi_pass wordpress:9000;
-            #}
+            location ~ \.php$ {								# For every php request
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass wordpress:9000;
+            }
         }
         " >> etc/nginx/sites-available/default
-mkdir -p /var/log
-echo "heeeeeeeeeeellllloooooooo" >> /var/log/hello.log
+
 nginx -g "daemon off;"
