@@ -8,7 +8,7 @@ chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 mkdir /run/php
 
-cd /var/www/html && wp core download --allow-root
+cd /var/www/html && wp core download --allow-root --force
  
 mv wp-config-sample.php wp-config.php && wp config set SERVER_PORT 3306 --allow-root
 

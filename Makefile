@@ -1,4 +1,4 @@
-CLEAN = docker compose down --rmi all; clear
+CLEAN = docker compose down --rmi all
 
 all :
 	docker-compose -f ./srcs/docker-compose.yml up
