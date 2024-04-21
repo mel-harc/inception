@@ -6,8 +6,8 @@ RUN apt install -y php php-mysql php-fpm mariadb-client
 
 RUN sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
 
-COPY tools/wp.sh /copy/
+COPY tools/wp.sh /
 
-RUN chmod +x /copy/wp.sh
+RUN chmod +x /wp.sh
 
-CMD ["./copy/wp.sh"]
+CMD ["./wp.sh"]

@@ -6,13 +6,13 @@ volumes:
     driver_opts:
        o: bind
        type: none
-       device: /home/melharc/inception/srcs/requirements/wordpress
+       device: /var/data/wp
   DB:
     driver: local
     driver_opts:
        o: bind
        type: none
-       device: /home/melharc/inception/srcs/requirements/mariadb
+       device: /var/data/md
 
 networks:
   NT:
@@ -25,7 +25,7 @@ services:
     networks:
       - NT
     volumes:
-      - DB:/var/lib/msql
+      - DB:/var/lib/mysql
     env_file:
       - .env
 
