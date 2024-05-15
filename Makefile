@@ -1,4 +1,6 @@
 all :
+	mkdir -p /home/melharc/data/wp
+	mkdir -p /home/melharc/data/db
 	docker-compose -f ./srcs/docker-compose.yml up
 
 down:
