@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt install -y curl
+RUN apt-get update -y  && apt install -y curl
 
 RUN apt install -y php php-mysql php-fpm mariadb-client
 

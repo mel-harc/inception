@@ -15,7 +15,8 @@ volumes:
        device: /var/data/wp
 
 networks:
-  NT:
+  Net:
+    name: Net
 
 services:
   mariadb:
@@ -23,24 +24,26 @@ services:
     build: ./requirements/mariadb/.
     image: mariadb
     networks:
-      - NT
+      - Net
     volumes:
-      - DB:/var/lib/mysql
+      - DataBase:/var/lib/mysql
     env_file:
       - .env
+    restart: always
 
   wordpress:
-    image: wordpress
-    build: ./requirements/wordpress/.
     container_name: wordpress
+    build: ./requirements/wordpress/.
+    image: wordpress
     depends_on:
       - mariadb
     networks:
-      - NT
+      - Net
     volumes:
       - WordPress:/var/www/html
     env_file:
       - .env
+    restart: always
 
   nginx:
     container_name: nginx
@@ -49,10 +52,11 @@ services:
     depends_on:
       - wordpress
     networks:
-      - NT
+      - Net
     ports:
       - "443:443"
     volumes:
       - WordPress:/var/www/html
     env_file:
       - .env
+    restart: always
