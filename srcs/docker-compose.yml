@@ -1,18 +1,20 @@
 version: '3.5'
 
 volumes:
-  DB:
+  DataBase:
+    name: DataBase
     driver: local
     driver_opts:
        o: bind
        type: none
-       device: /var/data/md
+       device: /home/mel-harc/data/db
   WordPress:
+    name: WordPress
     driver: local
     driver_opts:
        o: bind
        type: none
-       device: /var/data/wp
+       device: /home/mel-harc/data/wp
 
 networks:
   Net:
