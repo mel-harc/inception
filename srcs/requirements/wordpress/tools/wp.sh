@@ -6,8 +6,6 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 
 chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
-mkdir -p /run/php
-
 cd /var/www/html && wp core download --allow-root --force
  
 mv wp-config-sample.php wp-config.php

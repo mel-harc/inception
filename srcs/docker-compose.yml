@@ -24,7 +24,7 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/.
-    image: mariadb
+    image: mariadb:mel-harc
     networks:
       - Net
     volumes:
@@ -36,7 +36,7 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress/.
-    image: wordpress
+    image: wordpress:mel-harc
     depends_on:
       - mariadb
     networks:
@@ -50,7 +50,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx/.
-    image: nginx
+    image: nginx:mel-harc
     depends_on:
       - wordpress
     networks:
