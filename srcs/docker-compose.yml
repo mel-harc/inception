@@ -7,14 +7,14 @@ volumes:
     driver_opts:
        o: bind
        type: none
-       device: /home/mel-harc/data/db
+       device: ${DATA_PATH_DB}
   WordPress:
     name: WordPress
     driver: local
     driver_opts:
        o: bind
        type: none
-       device: /home/mel-harc/data/wp
+       device: ${DATA_PATH_WP}
 
 networks:
   Net:
